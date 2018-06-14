@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Locality index{% endblock %}
+
+{% block body %}
+    <h1>Locality index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Postal code</th>
+                <th>Locality</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for locality in localities %}
+            <tr>
+                <td>{{ locality.postalCode }}</td>
+                <td>{{ locality.locality }}</td>
+                <td>
+                    <a href="{{ path('locality_show', {'id': locality.id}) }}">show</a>
+                    <a href="{{ path('locality_edit', {'id': locality.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('locality_new') }}">Create new</a>
+{% endblock %}

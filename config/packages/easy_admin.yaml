@@ -1,0 +1,9 @@
+easy_admin:
+    site_name: "Nylund Production"
+    entities:
+        - App\Entity\Locality
+        - App\Entity\Location
+        - App\Entity\Show
+        - App\Entity\Role
+        - App\Entity\Artist
+        - App\Entity\Type

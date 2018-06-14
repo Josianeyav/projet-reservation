@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Show index{% endblock %}
+
+{% block body %}
+    <h1>Show index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Slug</th>
+                <th>Title</th>
+                <th>PosterUrl</th>
+                <th>Bookable</th>
+                <th>Price</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for show in shows %}
+            <tr>
+                <td>{{ show.id }}</td>
+                <td>{{ show.slug }}</td>
+                <td>{{ show.title }}</td>
+                <td>{{ show.posterUrl }}</td>
+                <td>{{ show.bookable ? 'Yes' : 'No' }}</td>
+                <td>{{ show.price }}</td>
+                <td>
+                    <a href="{{ path('show_show', {'id': show.id}) }}">show</a>
+                    <a href="{{ path('show_edit', {'id': show.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('show_new') }}">Create new</a>
+{% endblock %}
